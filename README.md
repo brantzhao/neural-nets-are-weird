@@ -1,17 +1,19 @@
-# neural nets are weird
+# neural nets are weird - tried out on Windowns
 
-Source code for the article [How to trick a neural network into thinking a panda is a vulture](https://codewords.recurse.com/issues/five/why-do-neural-networks-think-a-panda-is-a-vulture). Here's how to get it going! It will download about 1.5GB and take maybe half an hour to set up and compile everything, so don't expect it to be instant. Tested on Linux and OS X.
+Source code for the article [How to trick a neural network into thinking a panda is a vulture](https://codewords.recurse.com/issues/five/why-do-neural-networks-think-a-panda-is-a-vulture). 
 
-```
-git clone https://github.com/jvns/neural-nets-are-weird
-cd neural-nets-are-weird
-docker build -t neural-nets-fun:caffe .
-docker run -i -p 9990:9990 -v $PWD:/neural-nets -t neural-nets-fun:caffe /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
-```
-
-**On Linux:** Once you've run those commands, click on this link: [http://localhost:9990/notebooks/notebooks/neural-nets-are-weird.ipynb](http://localhost:9990/notebooks/notebooks/neural-nets-are-weird.ipynb) and you should be good to go! This starts an IPython Notebook server, which lets you run code interactively.
-
-**On OSX:** You must use the address of the VM hosting Docker in the URL (not localhost). This address is shown when starting Docker, or you can get the *docker-address* by running the command ````docker-machine ip default```` Then point your browser to *http://docker-address:9990* and follow along with the instructions in the IPython notebook.
-
-
-There's [another Docker image for Caffe here](https://hub.docker.com/r/mjaskowski/caffe-cpu/)
+**On Windows(tested with WIN7):** 
+1. Install caffe
+    a. Get caffe for windows by git clone https://github.com/Microsoft/caffe.git 
+    b. Get miniconda 2.7 64-bit Windows installer and install miniconda2
+        i.   conda install --yes numpy scipy matplotlib scikit-image pip
+        ii.  pip install protobuf
+        iii. conda install jupyter
+2. Build caffe by following the instructions at https://github.com/Microsoft/caffe
+3. Config your PythonPath ENV VAR to <caffe>\Build\x64\Release\pycaffe\
+4. git clone https://github.com/brantz/neural-nets-are-weird
+5. Open jupyter notebook
+    a. $jupyter notebook --notebook-dir=<Unicode>
+    b. Open neural-nets-are-weird-windows.ipynb
+    c. You may need to modify the windows path in the notebook
+6. Have fun!
